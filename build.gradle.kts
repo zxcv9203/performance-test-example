@@ -32,7 +32,6 @@ dependencies {
 
     // cache
     implementation("org.ehcache:ehcache")
-    implementation("org.hibernate:hibernate-ehcache")
 }
 
 kotlin {
