@@ -7,7 +7,7 @@ export const requests = new Counter('http_reqs');
 
 export const options = {
     stages: [
-        { duration: '5s', target: 20 },
+        { duration: '10s', target: 200 },
     ],
 };
 
@@ -19,6 +19,6 @@ export default function () {
 
 export function handleSummary(data) {
     return {
-        'summary.html': htmlReport(data),
+        'summary-no-cache.html': htmlReport(data),
     };
 }
