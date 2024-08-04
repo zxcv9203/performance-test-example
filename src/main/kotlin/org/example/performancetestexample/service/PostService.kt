@@ -11,6 +11,6 @@ import org.springframework.stereotype.Service
 class PostService(
     private val postRepository: PostRepository
 ) {
-    @Cacheable("post-cache")
+    @Cacheable("posts")
     fun findAll(pageable: Pageable): Page<Post> = postRepository.findAll(pageable)
 }
