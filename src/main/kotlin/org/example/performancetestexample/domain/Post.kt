@@ -4,6 +4,7 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
+@Cacheable
 class Post(
 
     @Column(name = "title", nullable = false, length = 100)

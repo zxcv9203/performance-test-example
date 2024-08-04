@@ -1,0 +1,44 @@
+
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>k6 부하 테스트 요약</title>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <style>
+                body { font-family: Arial, sans-serif; }
+                .chart-container { width: 80%; margin: auto; }
+            </style>
+        </head>
+        <body>
+            <h1>k6 부하 테스트 요약</h1>
+            <p><strong>타임스탬프:</strong> 2024-08-04T11:42:03.684Z</p>
+            <p><strong>가상 사용자 수 (최대):</strong> 200</p>
+            <h2>HTTP 요청 응답 시간</h2>
+            <div class="chart-container">
+                <canvas id="httpReqDurationChart"></canvas>
+            </div>
+            <script>
+                var ctx = document.getElementById('httpReqDurationChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ["최대 응답 시간","응답 시간의 90% 이하","응답 시간의 95% 이하","평균 응답 시간","최소 응답 시간","중간 응답 시간"],
+                        datasets: [{
+                            label: 'HTTP 요청 응답 시간 (ms)',
+                            data: [109.668,7.574,10.576199999999998,4.792873732718903,0.417,2.525],
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </body>
+        </html>

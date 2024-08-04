@@ -19,6 +19,6 @@ export default function () {
 
 export function handleSummary(data) {
     return {
-        'summary-no-cache.html': htmlReport(data),
+        'summary-cache.html': htmlReport(data),
     };
 }
