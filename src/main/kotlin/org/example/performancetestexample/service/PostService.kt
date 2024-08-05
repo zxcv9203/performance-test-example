@@ -22,16 +22,18 @@ class PostService(
     fun findAll(pageable: Pageable): Page<Post> = postRepository.findAll(pageable)
 
     @CachePut("posts", key = "#id")
-    @CacheEvict("posts", allEntries = true)
-    fun update(id: Long, request: PostUpdateRequest) {
+    fun update(id: Long, request: PostUpdateRequest): Post {
         val post = postRepository.findByIdOrNull(id)
             ?: throw IllegalArgumentException("게시글이 존재하지 않습니다.")
 
         post.title = request.title
         post.content = request.content
 
-        postRepository.save(post)
+        return postRepository.save(post)
     }
 
+    @Cacheable("posts", key = "#id")
+    fun findById(id: Long): Post = postRepository.findByIdOrNull(id)
+        ?: throw IllegalArgumentException("게시글이 존재하지 않습니다.")
 
 }

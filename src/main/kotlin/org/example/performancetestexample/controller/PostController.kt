@@ -19,4 +19,6 @@ class PostController(
         @RequestBody request: PostUpdateRequest
     ) = postService.update(id, request)
 
+    @GetMapping("/posts/{id}")
+    fun findById(@PathVariable id: Long) = postService.findById(id)
 }
