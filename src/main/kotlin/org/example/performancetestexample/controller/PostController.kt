@@ -1,9 +1,9 @@
 package org.example.performancetestexample.controller
 
+import org.example.performancetestexample.controller.request.PostUpdateRequest
 import org.example.performancetestexample.service.PostService
 import org.springframework.data.domain.Pageable
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class PostController(
@@ -12,4 +12,11 @@ class PostController(
 
     @GetMapping("/posts")
     fun findAll(pageable: Pageable) = postService.findAll(pageable)
+
+    @PatchMapping("/posts/{id}")
+    fun update(
+        @PathVariable id: Long,
+        @RequestBody request: PostUpdateRequest
+    ) = postService.update(id, request)
+
 }
