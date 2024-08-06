@@ -36,4 +36,7 @@ class PostService(
     fun findById(id: Long): Post = postRepository.findByIdOrNull(id)
         ?: throw IllegalArgumentException("게시글이 존재하지 않습니다.")
 
+    @CacheEvict("posts", key = "#id")
+    fun deleteById(id: Long) = postRepository.deleteById(id)
+
 }

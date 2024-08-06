@@ -21,4 +21,7 @@ class PostController(
 
     @GetMapping("/posts/{id}")
     fun findById(@PathVariable id: Long) = postService.findById(id)
+
+    @DeleteMapping("/posts/{id}")
+    fun deleteById(@PathVariable id: Long) = postService.deleteById(id)
 }
